@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Employee Manager</title>
+</head>
+<body>
+
+<button onclick="searchEmp()">Search Employee</button>
+
+<script>
+    let employees = [];
+
+    function addEmp(id, name, salary, role) {
+        employees.push({ id, name, salary, role });
+        console.log("Employee added:", name);
+    }
+
+    function calculateSal() {
+        let total = employees.reduce((sum, emp) => sum + emp.salary, 0);
+        console.log("Total Salary:", total);
+    }
+
+    function updateEmp(id, newDetail) {
+        let emp = employees.find(e => e.id === id);
+        if (emp) {
+            Object.assign(emp, newDetail);
+            console.log("Employee updated:", emp);
+        } else {
+            console.log("Employee not found");
+        }
+    }
+
+    function removeEmp(index) {
+        if (index >= 0 && index < employees.length) {
+            let removed = employees.splice(index, 1);
+            console.log("Employee removed:", removed[0]);
+        } else {
+            console.log("Employee not found at index", index);
+        }
+    }
+
+    function searchEmp() {
+        let input = prompt("Enter the employee name:");
+
+        if (!input) {
+            console.log("Please enter a valid name.");
+            return;
+        }
+
+        let result = employees.filter(e => e.name.toLowerCase() === input.toLowerCase());
+
+        if (result.length > 0) {
+            console.log("Employee(s) found:", result);
+        } else {
+            console.log("Employee not found.");
+        }
+    }
+
+    // Sample data
+    addEmp(1, "akshaya", 50000, "Developer");
+    addEmp(2, "sweetlin", 60000, "Designer");
+
+    updateEmp(1, { name: "Ashmitha" });
+    calculateSal();
+    removeEmp(0);
+
+</script>
+
+</body>
+</html>
