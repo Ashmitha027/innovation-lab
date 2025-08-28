@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <style>
+    body {
+      
+      align-items: center;
+      height: 100vh;
+      background: #f193d2;
+      
+      
+    }
+    #clock {
+      color: #eccc63;
+      font-size: 48px;
+      background: #80bfe9;
+      padding: 20px 40px;
+      
+    }
+  </style>
+</head>
+<body>
+  <div id="clock">Loading...</div>
+  <script>
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const hh = String(hours).padStart(2, '0');
+    const mm = String(minutes).padStart(2, '0');
+    const ss = String(seconds).padStart(2, '0');
+    const timeString = `${hh}:${mm}:${ss} ${ampm}`;
+    document.getElementById("clock").innerText = timeString;
+  </script>
+</body>
+</html>
