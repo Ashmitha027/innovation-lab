@@ -8,10 +8,42 @@
 <body>
     <script>
         // quantifiers specify how many times a charater or group should appear.
-        let text="aaaba";
-        let pattern=/\a*/g;
-        let result=text.match(pattern);
-        console.log(result);
+    
+    let text = "aaaba";
+    let pattern = /a*/g;
+    let result = text.match(pattern);
+    console.log("Pattern 1:", result);
+
+    let sentence = "javascript programming language .\n java programming language";
+    let pattern2 = /^.*programming language.*/igm;
+    let result2 = sentence.match(pattern2);
+    console.log("Pattern 2:", result2);
+
+    let digitchar = "001js";
+    let pattern3 = /\d+\w+/g;
+    let result3 = digitchar.match(pattern3);
+    console.log("Pattern 3:", result3);
+
+    let texts = "hain kavikuyil";
+    let pattern4 = /\w+\s+\w+/g;
+    let result4 = texts.match(pattern4);
+    console.log("Pattern 4:", result4);
+    if (result4) {
+        console.log(result4[0]);
+        console.log(result4[1]); 
+        console.log(result4[2]);
+    }
+
+    let fruits = " apple banana apple grape";
+    let pattern5 = /(apple)/;
+    let result5 = pattern5.exec(fruits);
+    if (result5) {
+        console.log("Pattern 5:", result5[0]);
+        console.log(result5[1]);
+    }
+
+
+
     </script>
     <!-- *
     matches 0 or more consecutive as.
@@ -28,7 +60,20 @@
     common modifiers:
     i->case insensitive
     g->global match (all occurrences)
-    m->multiline match  -->
+    m->multiline match
+    metacharater:
+    meta character have special meaning in regex.
+    commom meta characters:
+    .->any character except newline
+    \d->digit(0-9)
+    \w->word character (letter,digit,_)
+    \s->whitespace-
+    ^->start of string/line
+    $->end of string/line
+    grouping
+    parantheses() are used to group patterns and capture submatches
+    example 
+    -->
 
 </body>
 </html>
