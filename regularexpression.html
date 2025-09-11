@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // quantifiers specify how many times a charater or group should appear.
+        let text="aaaba";
+        let pattern=/\a*/g;
+        let result=text.match(pattern);
+        console.log(result);
+    </script>
+    <!-- *
+    matches 0 or more consecutive as.
+    it allows empty matches too.
+    at last it checks once again so if not it return("").
+    +
+    unlike ? ,this doesn't allows empty matches.
+    instead of matching one a at a time, it groups consecutive as together.
+    ?
+    matches 0 or one a at each position.
+    at last it checks once again so if not it returns(""). 
+    modifier
+    modifiers (flags) change how regex matches.
+    common modifiers:
+    i->case insensitive
+    g->global match (all occurrences)
+    m->multiline match  -->
+
+</body>
+</html>
