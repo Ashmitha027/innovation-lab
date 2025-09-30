@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Slider</title>
+  <style>
+    .slider {
+      text-align: center;
+      margin-top: 50px;
+    }
+    #numberBox {
+      margin: 20px auto;
+      width: 400px;
+      height: 300px;
+      border: 2px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #numberBox img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div id="numberBox">
+      <img src="https://picsum.photos/id/1015/400/300" alt="slider image" />
+    </div>
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
+  </div>
+
+  <script>
+    // Image URLs (replace these with your own image paths or URLs)
+    const numbers = [
+      "https://picsum.photos/id/1015/400/300",
+      "https://picsum.photos/id/1020/400/300",
+      "https://picsum.photos/id/1024/400/300"
+    ];
+    
+    let currentIndex = 0;
+    const numberBox = document.getElementById("numberBox");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    function updateImage() {
+      numberBox.innerHTML = `<img src="${numbers[currentIndex]}" alt="slider image" />`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % numbers.length;
+      updateImage();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + numbers.length) % numbers.length;
+      updateImage();
+    });
+
+    // Automatic sliding every 2 seconds
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % numbers.length;
+      updateImage();
+    }, 2000);
+  </script>
+</body>
+</html>
+
